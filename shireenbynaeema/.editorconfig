@@ -1,0 +1,157 @@
+root = true
+
+################################
+# Global settings
+################################
+
+[*]
+indent_style = space
+insert_final_newline = false
+
+################################
+# XML / JSON formatting
+################################
+
+[*.xml]
+indent_size = 2
+
+[*.{csproj,fsproj,props,targets,config,nuspec}]
+indent_size = 2
+
+[*.json]
+indent_size = 2
+
+################################
+# C# formatting
+################################
+
+[*.cs]
+indent_size = 4
+tab_width = 4
+
+################################
+# Using directives
+################################
+
+dotnet_separate_import_directive_groups = true
+dotnet_sort_system_directives_first = true
+
+################################
+# IDE rules (STRICT)
+################################
+
+dotnet_diagnostic.IDE0001.severity = warning
+dotnet_diagnostic.IDE0002.severity = warning
+dotnet_diagnostic.IDE0003.severity = none
+dotnet_diagnostic.IDE0004.severity = none
+
+# 🔴 Critical: enforce unused using removal
+dotnet_diagnostic.IDE0005.severity = error
+
+dotnet_diagnostic.IDE0010.severity = warning
+dotnet_diagnostic.IDE0011.severity = warning
+dotnet_diagnostic.IDE0028.severity = warning
+dotnet_diagnostic.IDE0031.severity = warning
+dotnet_diagnostic.IDE0044.severity = warning
+dotnet_diagnostic.IDE0049.severity = warning
+dotnet_diagnostic.IDE0051.severity = warning
+dotnet_diagnostic.IDE0052.severity = warning
+dotnet_diagnostic.IDE0058.severity = none
+dotnet_diagnostic.IDE0060.severity = none
+dotnet_diagnostic.IDE0066.severity = warning
+dotnet_diagnostic.IDE0071.severity = warning
+dotnet_diagnostic.IDE0074.severity = warning
+dotnet_diagnostic.IDE0090.severity = warning
+dotnet_diagnostic.IDE0160.severity = warning
+dotnet_diagnostic.IDE0161.severity = warning
+
+################################
+# Style rules
+################################
+
+dotnet_style_namespace_match_folder = false:silent
+csharp_style_namespace_declarations = block_scoped:silent
+
+################################
+# Formatting rules
+################################
+
+csharp_new_line_before_open_brace = all
+csharp_new_line_before_else = true
+csharp_new_line_before_catch = true
+csharp_new_line_before_finally = true
+
+csharp_space_after_comma = true
+csharp_space_before_comma = false
+csharp_space_after_keywords_in_control_flow_statements = true
+csharp_space_around_binary_operators = before_and_after
+
+################################
+# Performance (CA rules)
+################################
+
+dotnet_diagnostic.CA1822.severity = suggestion
+dotnet_diagnostic.CA2000.severity = warning
+dotnet_diagnostic.CA2007.severity = none
+dotnet_diagnostic.CA1062.severity = none
+dotnet_diagnostic.CA1305.severity = none
+dotnet_diagnostic.CA1031.severity = none
+dotnet_diagnostic.CA1707.severity = none
+dotnet_diagnostic.CA1708.severity = none
+dotnet_diagnostic.CA1716.severity = none
+dotnet_diagnostic.CA1711.severity = none
+dotnet_diagnostic.CA2211.severity = none
+dotnet_diagnostic.CA1848.severity = none
+dotnet_diagnostic.CA1854.severity = none
+dotnet_diagnostic.CA1310.severity = none
+dotnet_diagnostic.CA1873.severity = none
+
+################################
+# StyleCop rules
+################################
+
+dotnet_diagnostic.SA1633.severity = none
+dotnet_diagnostic.SA1200.severity = warning
+dotnet_diagnostic.SA1309.severity = warning
+dotnet_diagnostic.SA1101.severity = warning
+dotnet_diagnostic.SA1401.severity = none
+dotnet_diagnostic.SA1516.severity = none
+dotnet_diagnostic.SA0001.severity = none
+dotnet_diagnostic.SA1600.severity = none
+dotnet_diagnostic.SA1601.severity = none
+dotnet_diagnostic.SA1602.severity = none
+dotnet_diagnostic.SA1604.severity = none
+dotnet_diagnostic.SA1605.severity = none
+dotnet_diagnostic.SA1606.severity = none
+dotnet_diagnostic.SA1123.severity = none
+dotnet_diagnostic.SA1649.severity = none
+dotnet_diagnostic.SA1402.severity = none
+dotnet_diagnostic.SA1201.severity = none
+dotnet_diagnostic.SA1137.severity = none
+
+################################
+# Targeted overrides
+################################
+
+# Allow cleaner extension methods
+[webapp.SharedServices/Extensions/*.cs]
+dotnet_diagnostic.SA1101.severity = none
+
+[webapp.SharedServices/Enums/*.cs]
+dotnet_diagnostic.SA1101.severity = none
+
+[webapp.Domain/Extensions/*.cs]
+dotnet_diagnostic.SA1101.severity = none
+
+[webapp.Domain/MappingExtensions/MasterData/*.cs]
+dotnet_diagnostic.SA1101.severity = none
+
+################################
+# Migrations (RELAXED)
+################################
+
+[webapp.Server/Migrations/*.cs]
+dotnet_analyzer_diagnostic.severity = none
+dotnet_diagnostic.CA1861.severity = none
+dotnet_diagnostic.CA1825.severity = none
+dotnet_diagnostic.SA1200.severity = none

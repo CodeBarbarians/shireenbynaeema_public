@@ -1,0 +1,179 @@
+Shireen by Naeema — Website Proposal
+
+Prepared for: Shireen by Naeema
+Date: June 2026
+Domain: shireenbynaeema.com
+
+====================
+
+1. Executive Summary
+
+Shireen by Naeema is a premium women's western clothing brand based in Pakistan. The website serves as a full-stack e-commerce platform enabling online shopping with nationwide delivery, multiple payment options, and an admin surface for product, order, and content management.
+
+This proposal covers the current state of the platform, a clarified technical architecture, and a practical roadmap for product, marketing, and operational growth, together with explicit one-time and recurring cost estimates.
+
+--------------------
+
+2. Current Platform Overview
+
+2.1 What Exists Today
+
+Feature: Product catalog with categories — Status: Live
+Feature: Product variants (size/color/stock) — Status: Live
+Feature: Shopping cart (guest + authenticated) — Status: Live
+Feature: Checkout (Stripe, COD, Bank Transfer) — Status: Live
+Feature: Order management — Status: Live
+Feature: Invoice generation — Status: Live
+Feature: Delivery tracking — Status: Live
+Feature: Return/refund processing — Status: Live
+Feature: Customer accounts & order history — Status: Live
+Feature: CMS pages (About, FAQ, Shipping, Size Guide, etc.) — Status: Live
+Feature: Admin dashboard — Status: Live
+Feature: Product/category CRUD — Status: Live
+Feature: Image upload with compression (WebP) — Status: Live
+Feature: Soft delete for all master data — Status: Live
+Feature: SEO meta tags, structured data, sitemap — Status: Live
+Feature: Responsive design (mobile-first) — Status: Live
+Feature: Dark/light/peach theme toggle — Status: Live
+Feature: Search with live results — Status: Live
+
+2.2 Key Stats
+
+- 37 routes (14 public, 4 protected, 19 admin)
+- 12 API controllers covering all business logic
+- 7 soft-deletable entities with full audit trails
+- 3 payment methods (Stripe cards, COD, Bank Transfer with 5% discount)
+- Free nationwide delivery on all orders
+- 14-day exchange policy
+
+--------------------
+
+3. Technical Architecture
+
+3.1 Tech Stack
+
+Layer: Frontend — Technology: React + TypeScript + Vite — Version: 19.x
+Layer: CSS — Technology: Tailwind CSS — Version: 4.x
+Layer: State — Technology: Zustand — Version: 5.x
+Layer: UI Library — Technology: ShadCN (Radix-based) — Version: latest
+Layer: Backend — Technology: .NET (ASP.NET Core) — Version: 10.0
+Layer: ORM — Technology: Entity Framework Core — Version: 10.0
+Layer: Database — Technology: PostgreSQL — Version: 16
+Layer: Payments — Technology: Stripe — Version: v52
+Layer: Image Processing — Technology: SixLabors.ImageSharp — Version: 3.1
+Layer: Hosting — Technology: Railway (backend + frontend + DB)
+Layer: Frontend Deploy — Technology: Railway (frontend moved from Vercel)
+
+3.2 Architecture Pattern
+
+Clean Architecture with separation of concerns:
+- webapp.Domain/        → Entities, DTOs, interfaces
+- webapp.Application/   → Service interfaces
+- webapp.Infrastructure/ → EF Core, services, repository
+- webapp.Server/        → Controllers, middleware, startup
+- webapp.SharedServices/ → Cross-cutting (auth, audit, email)
+- shireenbynaeema-store/ → React SPA frontend
+
+3.3 Infrastructure
+
+- Containerized via Docker (multi-stage build)
+- Database migrations managed via EF Core
+- Image storage local to Railway with persistent volume (backups recommended)
+- Frontend hosting moved to Railway (single Railway project hosts backend, frontend, and DB for simplified deployment)
+- Global query filters for soft delete across all entities
+- Audit logging on all CRUD operations
+- Swagger/ReDoc API documentation at /swagger and /docs
+
+--------------------
+
+4. Business Model & Monetization
+
+(unchanged — see original for details)
+
+--------------------
+
+5. SEO & Digital Marketing Readiness
+
+(unchanged — see original for details)
+
+--------------------
+
+6. Feature Roadmap
+
+(unchanged — see original for details)
+
+--------------------
+
+7. Security & Compliance
+
+(unchanged — see original for details)
+
+--------------------
+
+8. Scalability Considerations
+
+(unchanged — see original — plus the hosting notes above about consolidating on Railway and adding CDN/backup plans)
+
+--------------------
+
+9. Estimated Investment (Updated — explicit technical & financial proposal)
+
+9.1 One-time Development Cost (Fixed)
+
+- Total one-time development cost (all phases, handover, initial QA, deployment): 170,000
+  - Note: Currency is not specified in your message; if you want this expressed in PKR, USD, or another currency, tell me and I will convert and/or break down the line-item costs.
+
+Recommended allocation (example split of the 170,000 across phases):
+- Phase 1 (Core Enhancements): 68,000
+- Phase 2 (Growth Features): 51,000
+- Phase 3 (Advanced Features): 51,000
+
+These allocations sum to 170,000 and can be adjusted per priority.
+
+9.2 Monthly Recurring Operating Costs (Updated for Railway hosting of backend, frontend, and DB)
+
+Below are conservative, practical estimated monthly costs for running the platform with the frontend, backend, and PostgreSQL database hosted on Railway, plus minimal ancillary services. Prices are approximate — please confirm preferred currency or billing plan for precise numbers.
+
+- Railway (shared project: Backend + Frontend + PostgreSQL managed instance): $40 - $120 / month
+  - Rationale: Railway free/low tiers exist but for production reliability use a paid plan that covers persistent volumes and a managed DB with backups.
+- Automated DB backups / snapshot retention (if not included): $5 - $20 / month
+- CDN (Cloudflare basic, recommended for images and assets): $0 - $20 / month (Cloudflare free tier is often sufficient initially)
+- Email provider (SendGrid / Mailgun transactional + marketing): $0 - $20 / month
+
+Estimated recurring total (conservative):
+- Lower bound: ~$45 / month
+- Upper bound (recommended production plan): ~$180 / month
+
+If you want these in PKR, using a placeholder exchange rate of 1 USD ≈ 280 PKR (rate will vary):
+- Lower bound ≈ PKR 12,600 / month
+- Upper bound ≈ PKR 50,400 / month
+
+Notes and optional additions:
+- Add a WAF / managed CDN plan if running ads or expecting heavy traffic spikes (+$20–$100/mo)
+- Monitoring, Sentry, or advanced logging: $10–$50/mo
+- Scheduled backup storage costs if keeping long retention windows may add extra $5–$30/mo
+
+9.3 Annualized First-Year Budget Example (one-time + 12 months recurring)
+- One-time development: 170,000
+- 12 months recurring (mid-range estimate $100/mo): $1,200
+- First-year total (approx): 171,200 (plus optional third-party ad spend, marketing, photography, etc.)
+
+--------------------
+
+10. Success Metrics
+
+(unchanged — see original for targets)
+
+--------------------
+
+11. Next Steps (updated)
+
+1. Confirm the currency for the one-time development cost (170,000) and whether you want a line-item breakdown in that currency.
+2. Confirm Railway plan tier you want to use (Starter / Pro / Team) so I can firm up monthly estimates and recommend exact plan configuration (persistent volumes size, DB tier, CPU/RAM, backups).
+3. Set up monitoring and automatic backups for the Railway PostgreSQL instance and enable a CDN for images.
+4. Finalize Phase 1 priority list and schedule (I can produce a 4-week sprint plan with milestones).
+5. Payment testing and staging promotion to production.
+
+--------------------
+
+This document was generated from PROPOSAL.md and styled for a Word document (Calibri recommended).

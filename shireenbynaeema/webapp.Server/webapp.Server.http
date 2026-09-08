@@ -1,0 +1,6 @@
+@webapp.Server_HostAddress = http://localhost:5244
+
+GET {{webapp.Server_HostAddress}}/api/SAPDatabases/List
+Accept: application/json
+
+###
